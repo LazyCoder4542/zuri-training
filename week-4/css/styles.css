@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+:root {
+    --ff-headings: 'Big Shoulders Display';
+    --ff-body: 'Lexend Deca';
+
+    --bright-orange: hsl(31, 77%, 52%);
+    --dark-cyan: hsl(184, 100%, 22%);
+    --very-dark-cyan: hsl(179, 100%, 13%);
+
+    --transparent-white: hsla(0, 0%, 100%, 0.75);
+    --very-light-gray: hsl(0, 0%, 95%);
+}
+body {
+    display: flex;
+    background-color: var(--very-light-gray);
+    font-family: var(--ff-body), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    min-height: 100vh;
+    place-items: center;
+    place-content: center;
+}
+h1 {
+    font-family: var(--ff-headings), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 700;
+    color: var(--very-light-gray);
+    font-size: 2.25rem;
+}
+.btn {
+    background-color: var(--very-light-gray);
+    padding: .75rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 500ms;
+}
+.btn:hover {
+    color: inherit !important;
+    background-color: transparent !important;
+    border-color: var(--very-light-gray);
+}
+.wrapper {
+    display: flex;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+.wrapper > .card {
+    width: 18rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    color: var(--transparent-white);
+    row-gap: 2rem;
+}
+.wrapper > .card > .btn{
+    margin-top: 3rem;
+}
+.wrapper > .card:nth-child(1) {
+    background-color: var(--bright-orange);
+}
+.wrapper > .card:nth-child(1) > .btn {
+    color: var(--bright-orange);
+}
+.wrapper > .card:nth-child(2){
+    background-color: var(--dark-cyan);
+}
+.wrapper > .card:nth-child(2) > .btn{
+    color: var(--dark-cyan);
+}
+.wrapper > .card:nth-child(3){
+    background-color: var(--very-dark-cyan);
+}
+.wrapper > .card:nth-child(3) > .btn{
+    color: var(--very-dark-cyan);
+}
+
+@media screen and (max-width: 1024px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .wrapper > .card {
+        width: 16rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+        padding: 5rem;
+        justify-content: stretch;
+    }
+    .wrapper {
+        flex-direction: column;
+    }
+    .wrapper > .card {
+        width: auto;
+    }
+    .wrapper > .card > p {
+        max-width: 75%;
+    }
+}
+@media screen and (max-width: 540px) {
+    body {
+        padding: 5rem 3rem;
+    }
+    .wrapper > .card > p {
+        max-width: none;
+    }
+}
+@media screen and (max-width: 375px) {
+    body {
+        padding: 5rem 2rem;
+    }
+}
