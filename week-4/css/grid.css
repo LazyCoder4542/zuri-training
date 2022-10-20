@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+}
+:root {
+    --red: hsl(14.19,83.54%,52.35%);
+    --yellow: hsl(38.5,100%,50.2%);
+    --green: hsl(142.18,94.29%,34.31%);
+    --blue: hsl(198.81,99.21%,49.8%);
+    --black: hsl(231.43,21.21%,12.94%);
+}
+body {
+    overflow: hidden;
+    display: flex;
+    background-color: var(--black);
+    min-height: 100vh;
+    place-items: center;
+    place-content: center;
+    padding: 3rem
+}
+.wrapper {
+    width: min(800px, 100%);
+    aspect-ratio: 3 / 2;
+    gap: 1rem;
+    display: grid;
+    grid-template-areas:
+    "a a a a a a a a a a b b b b b""a a a a a a a a a a b b b b b""c c c c c c c d d d d d d d d""c c c c c c c e e e e e e e e"
+    ;
+}
+.wrapper > div {
+    position: relative;
+    cursor: pointer;
+}
+.wrapper > div::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-color: inherit;
+    position: absolute;
+    pointer-events: none;
+}
+.wrapper > div:hover::before {
+    animation: pop 500ms forwards;
+}
+.wrapper > div:nth-child(1) {
+    grid-area: a;
+    background-color: var(--red);
+}
+.wrapper > div:nth-child(2){
+    grid-area: b;
+    background-color: var(--yellow);
+}
+.wrapper > div:nth-child(3){
+    grid-area: c;
+    background-color: var(--green);
+}
+.wrapper > div:nth-child(4) {
+    grid-area: d;
+    background-color: var(--blue);
+}
+.wrapper > div:nth-child(5){
+    grid-area: e;
+    background-color: var(--blue);
+}
+
+@keyframes pop {
+    from {
+        scale: 1;
+        opacity: .5;
+    }
+    to {
+        scale: 5;
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 2rem;
+    }
+    .wrapper {
+        flex-direction: column;
+    }
+    .wrapper > div:hover::before {
+        animation: pop 1000ms forwards;
+    }
+    @keyframes pop {
+        from {
+            scale: 1;
+            opacity: 1;
+        }
+        to {
+            scale: 10;
+            opacity: 0;
+        }
+    }
+}
+@media screen and (max-width: 540px) {
+    .wrapper {
+        gap: .75rem
+    }
+}
+@media screen and (max-width: 375px) {
+    body {
+        padding: 1rem;
+    }
+    .wrapper {
+        gap: .5rem
+    }
+}
